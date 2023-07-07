@@ -1,53 +1,20 @@
+import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
+import { Login } from './Login';
+import { Register } from './Register';
 
-class App extends Component {
-  state = {
-      posts: [
-        {
-          id: 1,
-          title: 'Título 1',
-          body: 'Corpo 1'
-        },
-        {
-          id: 2,
-          title: 'Título 2',
-          body: 'Corpo 2'
-        },
-        {
-          id: 3,
-          title: 'Título 3',
-          body: 'Corpo 3'
-        },
-      ]
-    };
+function App() {
+  const [currentForm, setCurrentForm] = useState('login');
 
-  handlePClick = () => {
-    this.setState({ name: 'Junior' });
-  }
-
-  handleAClick = (event) => {
-    event.preventDefault();
-    const { counter } = this.state;
-    this.setState({ counter: counter + 1 });
-  }
-
-  render() {
-
-    const { posts } = this.state;
-
-    return (
-      <div className="App">
-        {posts.map(post => (
-          <div key={post.id}>
-          <h1>{post.title}</h1>
-          <p>{post.body}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className='App'>
+      {
+        currentForm === "login" ? <Login /> : <Register />
+      }
+    </div>
+  );
 }
 
 export default App;
